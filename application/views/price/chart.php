@@ -26,70 +26,73 @@
     <button type="submit" class="btn btn-primary">送出</button>
   </form>
   <hr>
-  <h2 class="text-center">淨值表</h2>
-  <canvas id="canvas"></canvas>
-  <h2 class="text-center">成功率表</h2>
-  <canvas id="canvasSuccess"></canvas>
+  <!-- <h2 class="text-center">淨值表</h2> -->
+  <!-- <canvas id="canvas"></canvas> -->
+  <div id="canvas" style="height: 400px; width: 100%;"></div>
+  <!-- <h2 class="text-center">成功率表</h2> -->
+  <!-- <canvas id="canvasSuccess"></canvas> -->
+  <div id="canvasSuccess" style="height: 400px; width: 100%;"></div>
 </main>
 <script>
-  var data = {
-    labels : [
-      <?php foreach ($fundPrices as $key => $value): ?>
-        <?php echo '\''.$value->date.'\',' ?>
-      <?php endforeach ?>
-    ],
-    datasets : [
-      {
-        fillColor : "rgba(151,187,205,0.5)",
-        strokeColor : "rgba(151,187,205,1)",
-        pointColor : "rgba(151,187,205,1)",
-        pointStrokeColor : "#fff",
-        data : [
-          <?php foreach ($fundPrices as $key => $value): ?>
-            <?php echo $value->price.',' ?>
-          <?php endforeach ?>
-        ]
-      }
-    ]
-  };
-
-  var dataSuccess = {
-    labels : [
-      <?php foreach ($query as $key => $value): ?>
-        <?php echo '\''.$value->fundDate.'\',' ?>
-      <?php endforeach ?>
-    ],
-    datasets : [
-      {
-        fillColor : "rgba(151,187,205,0.5)",
-        strokeColor : "rgba(151,187,205,1)",
-        pointColor : "rgba(151,187,205,1)",
-        pointStrokeColor : "#fff",
-        data : [
-          <?php foreach ($query as $key => $value): ?>
-            <?php echo $value->success_percent.',' ?>
-          <?php endforeach ?>
-        ]
-      }
-    ]
-  };
-
-  var ctx = document.getElementById("canvas").getContext("2d");
-  window.myLine = new Chart(ctx).Line(data, {
-    responsive: true,
-    animation: false,
-    pointDot : false,
-    pointHitDetectionRadius: 1,
-
-  });
-  var ctx2 = document.getElementById("canvasSuccess").getContext("2d");
-  window.myLine = new Chart(ctx2).Line(dataSuccess, {
-    responsive: true,
-    animation: false,
-    pointDot : false,
-    pointHitDetectionRadius: 1,
-
+$(function () {
+  $("select").change(function () {
+    $("form").submit();
+  })
+})
+window.onload = function () {
+  var chart = new CanvasJS.Chart("canvasSuccess",
+  {
+    zoomEnabled: true,
+    title:{
+      text: "成功率表" 
+    },
+    animationEnabled: true,
+    
+    axisY :{
+      includeZero:false
+    },
+    
+    data: [{
+      type: 'line',
+      xValueType: "dateTime",
+      dataPoints: [
+        <?php foreach ($query as $key => $value): ?>
+        {
+          x: new Date(<?php echo str_replace('-', ', ', $value->fundDate) ?>),
+          y: <?php echo $value->success_percent ?>   
+        },
+        <?php endforeach ?>
+      ]
+    }]
   });
 
+  var chart2 = new CanvasJS.Chart("canvas",
+  {
+    zoomEnabled: true,
+    title:{
+      text: "淨值表" 
+    },
+    animationEnabled: true,
+    
+    axisY :{
+      includeZero:false
+    },
+
+    data: [{
+      type: 'line',
+      xValueType: "dateTime",
+      dataPoints: [
+        <?php foreach ($query as $key => $value): ?>
+        {
+          x: new Date(<?php echo str_replace('-', ', ', $value->fundDate) ?>),
+          y: <?php echo $value->price ?>,
+        },
+        <?php endforeach ?>
+      ]
+    }]
+  });
+  chart.render();
+  chart2.render();
+}
 </script>
 <?php $this->load->view('_layouts/_footer'); ?>

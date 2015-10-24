@@ -16,7 +16,7 @@ class Price extends MY_Controller {
   		$endDate = date("Y-m-d");
   	if ( ! $query = $this->price_model->select_interval($startDate, $endDate, $fundeName) ) {
   		$this->load->view('failure', [
-  			'message' => '查無此資料'
+  			'message' => '此黨基金淨值尚未滿三年'
 			]);
 			return;
   	}
@@ -24,7 +24,7 @@ class Price extends MY_Controller {
   	$this->load->view('price/chart', compact('query', 'fundName'));
   }
 
-  public function success($fundeName = 'FTH05', $startDate = null, $endDate = null, $years = 1)
+  public function success($fundeName = 'FTH05', $startDate = null, $endDate = null, $years = 3)
   { 
     if ( isset($_GET['fundeName'] ) ) {
       redirect('price/success/'.$_GET['fundeName'].'/'.$_GET['startDate'].'/'.$_GET['endDate'].'/');
@@ -36,7 +36,7 @@ class Price extends MY_Controller {
       $startDate = date("Y")-1 . date("-m-d");
     if ( ! $endDate)
       $endDate = date("Y-m-d");
-    $query = $this->success_model->select_by_fundename_date($fundeName, $startDate, $endDate);
+    $query = $this->success_model->select_by_fundename_date($fundeName, $startDate, $endDate, $years);
     if ( empty($query) ) {
       $this->load->view('failure', [
         'message' => '查無此資料'
@@ -114,12 +114,6 @@ class Price extends MY_Controller {
   	// echo $total;
   	echo (float) $rank / $total * 100 . '%';
   	// $this->load->view('price/index', compact('query'));
-  }
-
-  public function a()
-  {
-  	$query = $this->price_model->select_interval('2012-10-20', date('Y-m-d'), 'FTH05');
-  	$this->load->view('price/index', compact('query'));
   }
 
 }

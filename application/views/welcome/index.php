@@ -10,8 +10,9 @@
 		</tr>
 		<?php foreach ($query as $key => $value): ?>
 			<tr>
+			
 				<td><?php echo $key+1 ?></td>
-				<td><a href="<?php echo base_url('price/chart/'.$value->fundeName) ?>"><?php echo $value->fundName ?></a></td>
+				<td><a href="<?php echo base_url('price/success/'.$value->fundeName.'/'. date('Y-m-d', strtotime(date('Y/m/d'). '-1 years')) .'/'.date('Y-m-d').'/'.$value->years) ?>"><?php echo $value->fundName ?></a></td>
 				<td><?php echo $value->fundDate ?></td>
 				<td><?php echo $value->price ?></td>
 				<?php if ($value->success_percent > 99): ?>

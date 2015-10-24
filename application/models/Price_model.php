@@ -9,6 +9,14 @@ class Price_model extends MY_Model {
     parent::__construct();
   }
 
+  public function select_last()
+  {
+    $this->db->order_by('priceId', 'desc');
+    $this->db->limit(1);
+    $query = $this->db->get($this->table);
+    return $query->row();
+  }
+
   public function select_by_fundename($fundeName)
   {
   	$this->db->order_by('price', 'desc');

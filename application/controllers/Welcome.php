@@ -39,10 +39,13 @@ class Welcome extends MY_Controller {
 
 	public function index($years = 3)
 	{
-		if ( ! $query = $this->success_model->select_by_date_years(date("Y-m-d"), $years) ) {
-			$this->save_today_rank($years);
-		  $query = $this->success_model->select_by_date_years(date("Y-m-d"), $years);
-		}
+		$newestDate = $this->price_model->select_last()->date;
+		$query = $this->success_model->select_by_date_years($newestDate, $years);
+		// exit();
+		// if ( ! $query = $this->success_model->select_by_date_years(date("Y-m-d"), $years) ) {
+		// 	$this->save_today_rank($years);
+		//   $query = $this->success_model->select_by_date_years(date("Y-m-d"), $years);
+		// }
 		$this->load->view('welcome/index', compact('query'));
 	}
 }

@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="描述">
-  <meta name="keywords"content="關鍵字,關鍵字">
+  <meta name="description" content="基金投資成功率, 巴菲特 別人恐慌我貪婪,別人貪婪我恐懼">
+  <meta name="keywords"content="基金投資成功率, 巴菲特 別人恐慌我貪婪,別人貪婪我恐懼">
   <meta name="author" content="趙承瑋 Piece">
-  <title>Framework for Piece.</title>
+  <title>皮斯基金成功</title>
   <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.min.css') ?>">
   <link rel="stylesheet" href="<?php echo base_url('assets/css/animate.css') ?>">
   <!--[if lt IE 9]>
@@ -18,6 +18,7 @@
   <script src="<?php echo base_url('assets/js/bootstrap.min.js') ?>"></script>
   <script src="<?php echo base_url('assets/js/wow.min.js') ?>"></script>
   <script src="<?php echo base_url('assets/js/Chart.min.js') ?>"></script>
+  <script src="<?php echo base_url('assets/js/canvasjs.min.js') ?>"></script>
   <script>new WOW().init()</script>
 </head>
 <body>
