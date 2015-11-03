@@ -63,11 +63,11 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'dsn'	=> 'mysql:host=localhost;dbname=fund_db',
+	'dsn'	=> 'mysql:host=localhost;dbname=fund',
 	'hostname' => 'localhost',
 	'username' => 'root',
 	'password' => 'coppqyt',
-	'database' => 'fund_db',
+	'database' => 'fund',
 	'dbdriver' => 'pdo',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
@@ -83,3 +83,7 @@ $db['default'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
 );
+
+if ( $_SERVER['HTTP_HOST'] != 'localhost') {
+	$db['default']['username'] = 'fund';
+}

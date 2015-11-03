@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="基金投資成功率, 巴菲特 別人恐慌我貪婪,別人貪婪我恐懼">
-  <meta name="keywords"content="基金投資成功率, 巴菲特 別人恐慌我貪婪,別人貪婪我恐懼">
+  <meta name="description" content="基金投資成功率,股票型基金,巴菲特說別人恐慌我貪婪,別人貪婪我恐懼,提供相對三年來低點的股票型基金為成功率排行">
+  <meta name="keywords"content="基金投資成功率,股票型基金,巴菲特說別人恐慌我貪婪,別人貪婪我恐懼,提供相對三年來低點的股票型基金為成功率排行">
   <meta name="author" content="趙承瑋 Piece">
-  <title>皮斯基金成功</title>
+  <title>皮斯基金成功率</title>
   <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.min.css') ?>">
   <link rel="stylesheet" href="<?php echo base_url('assets/css/animate.css') ?>">
   <!--[if lt IE 9]>

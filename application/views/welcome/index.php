@@ -16,13 +16,13 @@
 				<td><?php echo $value->fundDate ?></td>
 				<td><?php echo $value->price ?></td>
 				<?php if ($value->success_percent > 99): ?>
-					<td class="text-success" style="font-size:24px"><?php echo $value->success_percent ?> 快買!</td>	
+					<td class="text-success" style="font-size:24px"><?php echo $value->success_percent ?> % 快買!</td>	
 				<?php elseif ( $value->success_percent > 95 && $value->success_percent <= 99 ): ?>
-					<td class="text-success" style="font-size:20px"><?php echo $value->success_percent ?></td>	
+					<td class="text-success" style="font-size:20px"><?php echo $value->success_percent ?> %</td>	
 				<?php elseif ( $value->success_percent <= 95 && $value->success_percent > 80 ) : ?>
-					<td class="text-info" style="font-size:16px;"><?php echo $value->success_percent ?></td>	
+					<td class="text-info" style="font-size:16px;"><?php echo $value->success_percent ?> %</td>	
 				<?php else: ?>
-					<td class="text-warning"><?php echo $value->success_percent ?></td>	
+					<td class="text-warning"><?php echo $value->success_percent ?> %</td>	
 				<?php endif ?>	
 			</tr>
 		<?php endforeach ?>	
